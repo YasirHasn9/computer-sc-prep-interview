@@ -33,7 +33,20 @@ function maxSubArray(arr, n) {
   return maxNum;
 }
 
-// console.log(maxSubArray([1, 2, 5, 2, 8, 1, 5], 4));
+function averageOfKNumsInArr(arr, k) {
+  let sum = 0;
+  let left = 0;
+  let res = [];
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+    if (i >= k - 1) {
+      res.push(sum);
+      sum -= arr[left];
+      left++;
+    }
+  }
+  return res;
+}
 module.exports = {
   maxSubArray,
   maxSubArr,
