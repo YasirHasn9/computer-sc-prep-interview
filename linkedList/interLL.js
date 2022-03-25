@@ -60,6 +60,23 @@ class LinkedList {
     currentNode.next = newNode;
   }
 
+  perviousNode(val) {
+    let currentNode = this.head;
+    while (!(currentNode.next === null) && currentNode.next.value !== val) {
+      currentNode = currentNode.next;
+    }
+    return currentNode;
+  }
+
+  // in order to remove a node, we need to find the node before it
+  // so the node before will point to the next of the removed node
+  // and the removed node will point to null
+  remove(val) {
+    const perviousNode = this.perviousNode(val);
+    if (!(perviousNode.next === null)) {
+      perviousNode.next = perviousNode.next.next;
+    }
+  }
   display() {
     let cur = this.head;
     while (cur.next) {
@@ -73,5 +90,8 @@ const ll = new LinkedList();
 ll.insert("sac", "head");
 ll.insert("sf", "sac");
 ll.insert("ny", "sf");
-
+console.log(" -------before--------");
+ll.display();
+ll.remove("ny");
+console.log(" --------after---------");
 ll.display();
