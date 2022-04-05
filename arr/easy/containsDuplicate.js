@@ -21,3 +21,9 @@ function containsDuplicates_2(nums) {
   }
   return false;
 }
+
+module.exports = {
+  containsDuplicates,
+  containsDuplicates_1,
+  containsDuplicates_2,
+};
