@@ -18,15 +18,35 @@ function towSumII(numbers, target) {
   }
 }
 
+//  another solution
+// since the array is already sorted, we are gonna create 2 pointers, left and right
+// iterate over the array if  left + right === target ---> return [left + right + 1]
+// if left + right < target : left++
+
+function towSumII_1(numbers, target) {
+  let left = 0,
+    right = numbers.length - 1;
+  while (left < right) {
+    if (numbers[left] + numbers[right] === target) return [left + 1, right + 1];
+    else if (numbers[left] + numbers[right] < target) left++;
+    else right--;
+  }
+}
 describe("towSumII", () => {
   test("It should return the indices of the 2 numbers to sum target", () => {
     let numbers = [2, 7, 11, 15],
       target = 9;
     let expected = [1, 2];
-    // expected
+    // towSumII()
     expect(towSumII(numbers, target)).toEqual(expected);
     expected.map((num) => expect(towSumII(numbers, target)).toContain(num));
-
     expect(towSumII(numbers, target)).toEqual(expect.arrayContaining(expected));
+
+    // towSumII_1()
+    expect(towSumII_1(numbers, target)).toEqual(expected);
+    expected.map((num) => expect(towSumII_1(numbers, target)).toContain(num));
+    expect(towSumII_1(numbers, target)).toEqual(
+      expect.arrayContaining(expected)
+    );
   });
 });
