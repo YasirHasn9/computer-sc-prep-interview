@@ -9,7 +9,7 @@
 // Explanation: "amanaplanacanalpanama" is a palindrome.
 
 function isPalindrome(s) {
-  let regex = /[^A-Za-z0-9]/g;
+  let regex = /[^A-Za-z]/g;
   s = s.replace(regex, "").toLowerCase();
   let left = 0,
     right = s.length - 1;
@@ -20,8 +20,9 @@ function isPalindrome(s) {
   }
   return true;
 }
-
-let str = "A man, a plan, a canal: Panama";
-let str1 = "0P";
-console.log(isPalindrome(str1));
-module.exports = { isPalindrome };
+describe("isPalindrome()", () => {
+  test("the function return true if string palindrome of false otherwise", () => {
+    let str = "A man, a plan, a canal: Panama";
+    expect(isPalindrome(str)).toBeTruthy();
+  });
+});

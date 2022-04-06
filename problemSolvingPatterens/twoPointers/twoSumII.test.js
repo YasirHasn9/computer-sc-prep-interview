@@ -7,7 +7,7 @@ so the idea is to loop over the array and creating an index start at one, and in
 create a hash table where each number is gonna be a key and the index its values
 */
 
-function towSumII(numbers, target) {
+function twoSumII(numbers, target) {
   let hashTable = {};
   let index = 1;
   for (let i = 0; i < numbers.length; i++) {
@@ -23,7 +23,7 @@ function towSumII(numbers, target) {
 // iterate over the array if  left + right === target ---> return [left + right + 1]
 // if left + right < target : left++
 
-function towSumII_1(numbers, target) {
+function twoSumII_1(numbers, target) {
   let left = 0,
     right = numbers.length - 1;
   while (left < right) {
@@ -32,20 +32,20 @@ function towSumII_1(numbers, target) {
     else right--;
   }
 }
-describe("towSumII", () => {
+describe("twoSumII", () => {
   test("It should return the indices of the 2 numbers to sum target", () => {
     let numbers = [2, 7, 11, 15],
       target = 9;
     let expected = [1, 2];
-    // towSumII()
-    expect(towSumII(numbers, target)).toEqual(expected);
-    expected.map((num) => expect(towSumII(numbers, target)).toContain(num));
-    expect(towSumII(numbers, target)).toEqual(expect.arrayContaining(expected));
+    // twoSumII()
+    expect(twoSumII(numbers, target)).toEqual(expected);
+    expected.map((num) => expect(twoSumII(numbers, target)).toContain(num));
+    expect(twoSumII(numbers, target)).toEqual(expect.arrayContaining(expected));
 
-    // towSumII_1()
-    expect(towSumII_1(numbers, target)).toEqual(expected);
-    expected.map((num) => expect(towSumII_1(numbers, target)).toContain(num));
-    expect(towSumII_1(numbers, target)).toEqual(
+    // twoSumII_1()
+    expect(twoSumII_1(numbers, target)).toEqual(expected);
+    expected.map((num) => expect(twoSumII_1(numbers, target)).toContain(num));
+    expect(twoSumII_1(numbers, target)).toEqual(
       expect.arrayContaining(expected)
     );
   });
