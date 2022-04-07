@@ -41,7 +41,8 @@ function lengthOfLongestSubstring(s) {
 create a set https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
 which hold a unique values
 create 2 pointers right and left 
-right is iterating over the sting and check if its in the set, if not then add it and get the max and move the right + 1
+right is iterating over the sting and check if its in the set, if not then add it and get t
+he max and move the right + 1
 if found the set then delete a char from the left and move left one position 
 */
 
@@ -62,7 +63,11 @@ function lengthOfLongestSubstring_1(s) {
 // console.log(lengthOfLongestSubstring("abcakbcbb"));
 // console.log(lengthOfLongestSubstring_1("abcakbcbb"));
 
-module.exports = {
-  lengthOfLongestSubstring,
-  lengthOfLongestSubstring_1,
-};
+describe("lengthOfLongestSubstring()", () => {
+  test("return the length of the longest substring within the given string ", () => {
+    const str = "bbbbbabcbb";
+    const len = 3;
+    expect(lengthOfLongestSubstring(str)).toBe(len);
+    expect(lengthOfLongestSubstring_1(str)).toBe(len);
+  });
+});
