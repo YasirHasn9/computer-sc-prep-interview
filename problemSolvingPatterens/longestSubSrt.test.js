@@ -19,5 +19,9 @@ function lengthOfLongestSubstring(s) {
   }
   return len;
 }
-
-module.exports = { lengthOfLongestSubstring };
+describe("lengthOfLongestSubstring(str: string)", () => {
+  test("should return a number of the longest of non-repeating substring", () => {
+    expect(lengthOfLongestSubstring("bbbbb")).toBe(1);
+    expect(lengthOfLongestSubstring("pwwkew")).toEqual(3);
+  });
+});

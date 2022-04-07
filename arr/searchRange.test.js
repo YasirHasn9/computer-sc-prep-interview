@@ -66,13 +66,15 @@ function bs(arr, t) {
   return -1;
 }
 
-let nums = [2, 4, 5, 5, 5, 5, 5, 7, 9];
-console.log(sec_first_and_last(nums, 9));
-console.log(first_and_last(nums, 9));
-console.log(searchRange(nums, 9));
+// let nums = [2, 4, 5, 5, 5, 5, 5, 7, 9];
 
-module.exports = {
-  first_and_last,
-  sec_first_and_last,
-  searchRange,
-};
+describe("searchRange()", () => {
+  test("find the last and end position in a sorted arr of numbers ", () => {
+    // let nums = [2, 4, 5, 5];
+    let nums = [2, 4, 5, 5, 5, 5, 5, 7, 9, 9];
+    expect(first_and_last(nums, 19)).toEqual([-1, -1]);
+    // expect(first_and_last(nums, 9)).toEqual([8, 9]);
+    // expect(sec_first_and_last(nums, 9)).toEqual([8, 9]);
+    // expect(searchRange(nums, 9)).toEqual([8, 9]);
+  });
+});

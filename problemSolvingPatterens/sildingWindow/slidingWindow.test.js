@@ -1,3 +1,6 @@
+// let { maxSubArray, maxSubArr } = require("./slidingWindow");
+// let { lengthOfLongestSubstring } = require("../longestSubSrt");
+
 // this is naive solution to find the max of consecutive n numbers in an array.
 // Time Complexity: O(n^2)
 function maxSubArr(arr, n) {
@@ -47,7 +50,18 @@ function averageOfKNumsInArr(arr, k) {
   }
   return res;
 }
-module.exports = {
-  maxSubArray,
-  maxSubArr,
-};
+describe("maxSubArray()", () => {
+  test("maxSubArray should return max of consecutive n numbers in an array ", () => {
+    let res = 17;
+    let arr = [1, 2, 5, 2, 8, 1, 5];
+    expect(maxSubArray(arr, 4)).toBe(res);
+  });
+});
+
+describe("maxSubArr()", () => {
+  test("Another naive function of maxSub", () => {
+    let res = 17;
+    let arr = [1, 2, 5, 2, 8, 1, 5];
+    expect(maxSubArr(arr, 4)).toEqual(res);
+  });
+});
