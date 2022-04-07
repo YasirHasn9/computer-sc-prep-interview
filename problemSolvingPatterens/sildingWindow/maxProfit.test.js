@@ -42,14 +42,61 @@ function maxProfit(prices) {
   return profit;
 }
 
+// Another solution is to use the built-in function in js
+// create 2 variable, one hold Number.MAX_VALUE which represents the maximum numeric value
+// And another hold the Number.MIN_VAlUE which represents the smallest positive numeric value in js
+//  then iterate over the array, find the minimum value between the current stock and the and our created min_value
+// then find the max by subtract the current stock form the minimum
+// prices = [ 6,7,1,5,3,6]
+// mn = Number.MAX_VAlUE
+// profit = Number.MIN_VALUE
+// i = 0
+// price[0] = 6
+// min = minimum(mn, 6) ==> (big number , 6) == 6
+// profit = maximum(profit, prices[0] - min) => (0< number > 1, 6 - 6) => 0< number >
+// i = 1
+// price[1] = 7
+// min = minimum(6, 7) == 6
+// profit = maximum(0< number > , 7 - 6 = 1) == 1
+// i = 2
+// price[2] = 1
+// min = minimum(6, 1) == 1
+// profit = maximum(1, 1-1 = 0) == 1
+// i = 3
+// price[3] = 5
+// min = minimum(1,5) == 1
+// profit = maximum(0< number > , 5-1 = 4) == 4
+// i = 4
+// price[4] = 3
+// min = minimum(1,3) == 1
+// profit = maximum(4, 5-1 = 1) == 4
+// i = 5
+// price[5] = 6
+// min = minimum(1,6) == 1
+// profit = maximum(4, 6-1 = 5) == 5
+var maxProfit_1 = function (prices) {
+  let sz = prices.length;
+  let mn = Number.MAX_VALUE;
+  let ans = 0;
+  for (let i = 0; i < sz; i++) {
+    mn = Math.min(mn, prices[i]);
+    ans = Math.max(ans, prices[i] - mn);
+  }
+  return ans;
+};
 describe("maxProfit()", () => {
   test("It should return the max profit of buying and selling stocks", () => {
     // making profit
     let prices = [6, 7, 1, 5, 3, 6];
     let profit = 5;
     expect(maxProfit(prices)).toBe(profit);
-
     // making none
     expect(maxProfit([4, 3, 2, 1])).toBe(0);
+
+    expect(maxProfit_1(prices)).toBe(profit);
+    // making none
+    let ans = Number.MIN_VALUE;
+    expect(maxProfit_1([4, 3, 2, 1])).toBe(0);
+    // expect(maxProfit_1([4, 3, 2, 1])).toBe(ans);
   });
 });
