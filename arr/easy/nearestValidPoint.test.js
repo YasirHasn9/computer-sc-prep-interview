@@ -1,4 +1,5 @@
-//given
+// LeetCode https://leetcode.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/submissions/
+// given
 //  two numbers and each represents a coordinate <x , y>
 // array of arrays, each array inside the main one represents a point
 
