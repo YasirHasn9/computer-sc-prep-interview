@@ -1,0 +1,279 @@
+## Data structure and algorithm with JS By Michael McMillan
+
+### `Array in generals`
+
+Array is the most common data structure in computer programming.
+Because they are a built-in, they can be a great choice for data storage.
+
+But what is actually arrays ?
+simply, it is a linear collection of any elements.
+These elements can be accessed through integers called indices.
+Most programming languages have.
+
+### `Array in JS`
+
+In js, arrays are specialized type of js objects.
+when integers are used for indices, they are converted to strings under the hood to conform the requirements for js object.
+And because js are objects in js, they are not quite as efficient as the array of other programming languages.
+In js, array are specialized objects that categorized internally as arrays.
+
+### `Create an array`
+
+by using a key word `var`, `let`, and `const`
+
+```js
+let arr = [you can pass here any data type separating them by "," ]
+```
+
+or by calling the array constructor
+
+```js
+let arr = new Array();
+```
+
+you can pass element the constructor
+
+```js
+let arr = new Array(1, 2, 3, 4);
+console.log(arr); // [[1,2,3,4]]
+```
+
+you can allocate a memory for an empty array with a specific number of slots by passing a number the array constructor
+
+```js
+let arr = new Array(10);
+arr.length; // 10
+```
+
+we can use the [] to assign an element and access
+
+### `assign`
+
+```js
+let numbers = [];
+for (let i = 0; i < 10; i++) {
+  numbers[i] = i + 1;
+}
+```
+
+### `access`
+
+```js
+numbers[0]; // 1
+numbers[3]; // 3
+```
+
+### `Aggregate Array operations`
+
+you can assign one array to another array.
+
+```js
+let oldArray = [1, 2, 3];
+let newArray = oldArray;
+```
+
+since array are objects, in the memory object have references, when we assign an object of an array names oldArray, it
+means in the universe of js there is only one object named oldArray, whatever you do to that object, it will reflect that
+on its references.
+
+so, what we did above, we only did a shallow copy, its recommended to avoid it. We need a deep shallow, do your search and learn it ;)
+
+### `Mutator functions`
+
+#### Adding new element to the array
+
+There are two function to add to an array `.push()` and `.unShift()`
+
+#### .push()
+
+It adds a new element to the end of the array. The element gonna be the last one.
+position = array.length
+array[position] = new element
+
+```js
+let nums = [1, 2, 3];
+nums.push(4);
+// [1,2,3,4]
+```
+
+#### unshift()
+
+position = 0
+array[0] = new element, swap each element to the right (position + 1)
+it adds new element to beginning of the array. The element gonna be the first one.
+
+```js
+let nums = [1, 2, 3];
+nums.unshift(0);
+// [0,1,2,3]
+```
+
+`in terms of computation, adding to the beginning is more expensive, google it see why its more costy?`
+
+### Removing an element from the array
+
+There are two function to delete an element from the array `.pop()` and `.shift()`
+
+#### .pop()
+
+it removes an element from the end of the array
+
+```js
+let names = ["Ali" , "Miko" , "Jess" "Yasir"]
+names.pop()
+// names = [["Ali" , "Miko" , "Jess"]
+```
+
+#### .shift()
+
+it removes an element from the beginning of the array
+
+```js
+let numbers = [0, 1, 2, 3];
+numbers.shift();
+// numbers = ]1,2,3]
+```
+
+`in terms of computation, removing from beginning is more expensive, google it see why its more costy?`
+
+### Adding element and removing from the array
+
+in terms of computation, adding or removing element from the middle of the array,
+or somewhere not the the end, it is expensive. Because both adding and removing, it requires
+to shift the elements towards the left(the beginning) or towards the right(the end).
+However, there is mutator in js for adding and removing element to such case, it is `splice()`
+
+#### splice()
+
+it takes 3 arguments
+
+1. where you want to insert the new element/s
+2. the number of element you want to delete(0 in case of only adding)
+3. the element/s you want to insert
+
+```js
+let numbers = [1, 2, 3, 1000, 4000, 5000, 4];
+let newNumbers = [5, 6, 7];
+
+//adding
+numbers.splice(numbers.length, 0, ...newNumbers);
+console.log(numbers); // [1,2,3,1000,4000,5000, 4, 5,6,7]
+
+//removing
+numbers.splice(3, 3);
+console.log(numbers); // [1,2,3,4,5,6,7]
+```
+
+### Putting array element in order
+
+There are two functions to order an array in js, `.revers()` and `sort()`. They both
+do their work in-place. In-place means it does not cause an extra space
+
+#### reverse()
+
+it simply reverse the order of the array.
+
+```js
+let numbers = [1, 2, 3, 4];
+numbers.reverse(); // [4,3,2,1]
+```
+
+#### sort()
+
+it simply sorts the elements in the array. The problem sort() and numbers are not friends
+because sort does not like diversity unless there is a middleware between them this is why
+are gonna pass a anonymous function as a first argument to `.sort()` function to use it
+to compare numbers. The anonymous function will compare 2 pairs, and see if the difference between them, if it is negative, the left operand is less than the right operand, if it is 0, it means equality, it is positive, the left operand is greater than the right operand.
+
+```js
+let arr = [3, 12, 4, 1];
+arr.sort();
+console.log(arr); // [1,12,3,4]
+arr.sort((a, b) => a - b);
+console.log(arr); // [1,3,4,12]
+```
+
+## Iterator functions
+
+These functions iterate over the array and it applies a function for each element in the array.
+There are 2 types of them `Non-array-generating` and `New-array-generating`.
+
+### Non-Array-Generating
+
+#### .foraEach()
+
+It takes function as an argument and applies on every element
+
+```js
+function square(num) {
+  console.log(num, num * num);
+}
+let numbers = [1, 2, 3, 4];
+numbers.forEach(square);
+// 1 , 1
+// 2, 3
+// 3, 9
+// 4, 16
+```
+
+#### .every()
+
+it applies true for each element in the array, it returns true if every element in the array is true
+
+```js
+let numbers = [2, 4, 6];
+function isEven(num) {
+  return num % 2 === 0;
+}
+let even = numbers.every(isEven);
+if (even) {
+  console.log("numbers are even");
+} else {
+  console.log("numbers are not even");
+}
+//"numbers are even"
+```
+
+#### .some()
+
+it works like `.every()`, but it return true if the applied operation finds at least one element in the array that cause the function to return true
+
+```js
+var nums = [1, 2, 3, 4];
+var someEven = nums.some(isEven);
+if (someEven) {
+  console.log("some numbers are even");
+} else {
+  console.log("no numbers are even");
+}
+// "some numbers are even"
+```
+
+### New-Array-Generating
+
+#### .reduce()
+
+it applies a function to an accumulator and the successive elements in the array.
+And return a single value when it reached the end
+
+```js
+function add(accumulator, currentElement) {
+  return accumulator + currentElement;
+}
+let numbers = [1, 2, 3, 4, 5];
+let sum = numbers.reduce(add); // 15
+```
+
+#### .filter()
+
+it works similarly to `.every()` and return only the elements that pass the condition
+
+```js
+function greaterThanOne(num) {
+  return num > 1;
+}
+
+let numbers = [1, 2, 3, 4];
+let newArray = numbers.filter(greaterThanOne);
+console.log(newArray); // [2,3,4]
+```
