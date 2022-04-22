@@ -34,11 +34,22 @@ function topKFrequent(numbers, k) {
     .map((obj) => obj.key);
 }
 
+function topKFrequent_1(numbers, k) {
+  const ht = {};
+  for (const num of numbers) {
+    ht[num] = (ht[num] || 0) + 1;
+  }
+  return Object.entries(ht)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, k)
+    .map((num) => Number(num[0]));
+}
+
 describe("topKFrequent()", () => {
   it("Function should k most frequent element in the array of numbers", () => {
     const input = [4, 1, -1, 2, -1, 2, 3];
     const k = 2;
     expect(topKFrequent(input, k)).toEqual([2, -1]);
-    expect(topKFrequent(input, k)).toEqual(expect.arrayContaining([-1, 2]));
+    expect(topKFrequent_1(input, k)).toEqual(expect.arrayContaining([-1, 2]));
   });
 });
