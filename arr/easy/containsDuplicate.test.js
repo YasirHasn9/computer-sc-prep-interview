@@ -22,6 +22,10 @@ function containsDuplicates_2(nums) {
   return false;
 }
 
+function containsDuplicates_3(arr) {
+  return arr.length > new Set(arr).size;
+}
+
 describe("containsDuplicates()", () => {
   test(" function should return true if data has duplicated values", () => {
     const nums = [3, 2, 5, 3];
@@ -30,10 +34,12 @@ describe("containsDuplicates()", () => {
     expect(containsDuplicates(nums)).toBeTruthy();
     expect(containsDuplicates_1(nums)).toBeTruthy();
     expect(containsDuplicates_2(nums)).toBeTruthy();
+    expect(containsDuplicates_3(nums)).toBeTruthy();
 
     // return false
     expect(containsDuplicates(falselyNumber)).toBeFalsy();
     expect(containsDuplicates_1(falselyNumber)).toBeFalsy();
     expect(containsDuplicates_2(falselyNumber)).toBeFalsy();
+    expect(containsDuplicates_3(falselyNumber)).toBeFalsy();
   });
 });
