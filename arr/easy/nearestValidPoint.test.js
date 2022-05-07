@@ -3,13 +3,15 @@
 //  two numbers and each represents a coordinate <x , y>
 // array of arrays, each array inside the main one represents a point
 
-// now, we have a valid point if array[randomIndex][0] <x> ||  array[randomIndex][1] <y>
+// now, we have a valid point if array[randomIndex][0]"<x>" ||  array[randomIndex][1] "<y>"" is true,
 
 // if we have a valid point we can get the manhattan distance
 // abs(givenX- xOnRadomPoint) + abs(givenY - yOnRandomPoint)
 
+// we should return the index of the valid point
+
 function isValidPoint(givenX, givenY, point) {
-  return point[0] === givenX || point[1] === givenY;
+  return givenX === point[0] || givenY === point[1];
 }
 function manhattanDistance(givenX, xOnPoint, givenY, yOnPoint) {
   return Math.abs(givenX - xOnPoint) + Math.abs(givenY - yOnPoint);

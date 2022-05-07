@@ -45,6 +45,31 @@ function topKFrequent_1(numbers, k) {
     .map((num) => Number(num[0]));
 }
 
+// var topKFrequentSlow = function(nums, k) {
+//     let hash = {};
+//     const output = new Array(k).fill(0);
+//     for (let i = 0; i < nums.length; i ++) {
+//         if (nums[i] in hash) {
+//             hash[nums[i]] += 1;
+//         }
+//         else {
+//             hash[nums[i]] = 1;
+//         }
+//     }
+
+//     for (let i = 0; i < k; i ++) {
+//         let currentMaxCount = 0;
+//         for (const e in hash) {
+//             if (hash[e] > currentMaxCount && !output.includes(e)) {
+//                 output[i] = e;
+//                 currentMaxCount = hash[e];
+//             }
+//         }
+//     }
+
+//     return output;
+// };
+
 describe("topKFrequent()", () => {
   it("Function should k most frequent element in the array of numbers", () => {
     const input = [4, 1, -1, 2, -1, 2, 3];

@@ -15,6 +15,11 @@ function maxSubsetSumNoAdjacent(arr) {
   }
   return maxSums[maxSums.length - 1];
 }
+
+function testTheory(arr) {
+  let sconed = Math.max(arr[0], arr[1]);
+  for (let i = 2; i < arr.length; i++) {}
+}
 describe("maxSubsetSumNoAdjacent()", () => {
   it("Function should return the max sum of three non-adjacent numbers in the array", () => {
     expect(maxSubsetSumNoAdjacent([7, 4, 3, 11, 14])).toBe(24);

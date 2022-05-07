@@ -19,9 +19,6 @@ Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
 // iterate over the rest to see if we have anagram word
 // then iterate over the hash table and get its values
 
-function sortKey(key) {
-  return key.split("").sort().join("");
-}
 function groupAnagram(words) {
   let ht = {};
   for (let word of words) {
@@ -36,6 +33,9 @@ function groupAnagram(words) {
   return Object.values(ht);
 }
 
+function sortKey(key) {
+  return key.split("").sort().join("");
+}
 describe("groundAnagram()", () => {
   test("The function should return an array of anagram words arrays", () => {
     const words = ["eat", "tea", "tan", "ate", "nat", "bat"];
