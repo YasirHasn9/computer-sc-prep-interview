@@ -60,8 +60,39 @@ function romanToInt(s) {
   }
   return value;
 }
+
+function romanToInt_1(str) {
+  let number = 0;
+  let lastValue = 0;
+  for (let i = str.length - 1; i >= 0; i--) {
+    let roman = str[i];
+    let value =
+      roman === "I"
+        ? 1
+        : roman === "V"
+        ? 5
+        : roman === "X"
+        ? 10
+        : roman === "L"
+        ? 50
+        : roman === "C"
+        ? 100
+        : roman === "D"
+        ? 500
+        : 1000;
+
+    if (value >= lastValue) {
+      number += value;
+    } else {
+      number -= value;
+    }
+    lastValue = value;
+  }
+  return number;
+}
 describe("romanToInt()", () => {
   it("Function should receive a string as Roman number and convert it to a number", () => {
     expect(romanToInt("III")).toBe(3);
+    expect(romanToInt_1("III")).toBe(3);
   });
 });
